@@ -17,25 +17,49 @@ var counter = {
 
 function countLetters(counter, sample_text){
   // FIX ME
-  var text = sample_text.toLowerCase().split('');
 
-  for (var i = 0; i < text.length; i++){
-    for (var key in counter) {
-      if (text[i] === key){
-        counter[key]++;
-      }
-    }
+  // Using an array
+
+  sample_text = sample_text.toLowerCase();
+
+  if(sample_text.length === 0) {
+    return counter;
   }
-console.log('counter: ', counter);
+
+  if(counter.hasOwnProperty(sample_text[0])) {
+    counter[sample_text[0]]++;
+  }
+
+  countLetters(counter, sample_text.slice(1, sample_text.length));
 
 
-  // if(sample_text.length === 0){
-  //   return counter;
+  // Keeping as string
+  // if(sample_text.length === 0) {
+  //   return;
   // }
 
-  // counter[sample_text[0]] += 1;
+  // sample_text = sample_text.toLowerCase();
 
-  // return countLetters(counter, sample_text.slice(1, sample_text.length));
+  // if(counter.hasOwnProperty(sample_text[sample_text.length - 1])) {
+  //   counter[sample_text[sample_text.length - 1]]++;
+  // }
+
+  // return countLetters(counter, sample_text.slice(0, --sample_text.length));
+
+
+
+
+  // Not using recurison
+  // var text = sample_text.toLowerCase().split('');
+
+  // for (var i = 0; i < text.length; i++){
+  //   for (var key in counter) {
+  //     if (text[i] === key){
+  //       counter[key]++;
+  //     }
+  //   }
+  // }
+  // console.log('counter: ', counter);
 }
 
 
